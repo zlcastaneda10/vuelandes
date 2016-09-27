@@ -2,28 +2,34 @@ package vos;
 
 public class Vuelo {
 	private int id;
-	private Aeropuerto origen;
+	private String origen;
 	private String tipoCarga;
-	private Aeropuerto destino;
+	private String destino;
+	private String horaSalida;
+	private String horaLlegada;
 	private int frecuencia;
 	private int distanciaMillas;
 	private String duracion;
 	private String tipoCobertura;
 	private char realizado;
+	private String idAerolinea;
 	
 	
-	public Vuelo(int id, Aeropuerto origen, String tipoCarga, Aeropuerto destino, int frecuencia, int distanciaMillas,
-			String duracion, String tipoCobertura, char realizado) {
+	public Vuelo(int id, String origen, String tipoCarga, String destino,String horaSalida,String horaLlegada, int frecuencia, int distanciaMillas,
+			String duracion, String tipoCobertura, char realizado, String idAerolinea) {
 		super();
 		this.id = id;
 		this.origen = origen;
 		this.tipoCarga = tipoCarga;
 		this.destino = destino;
+		this.horaSalida = horaSalida;
+		this.horaLlegada = horaLlegada;
 		this.frecuencia = frecuencia;
 		this.distanciaMillas = distanciaMillas;
 		this.duracion = duracion;
 		this.tipoCobertura = tipoCobertura;
 		this.realizado = realizado;
+		this.idAerolinea = idAerolinea;
 	}
 
 
@@ -37,12 +43,12 @@ public class Vuelo {
 	}
 
 
-	public Aeropuerto getOrigen() {
+	public String getOrigen() {
 		return origen;
 	}
 
 
-	public void setOrigen(Aeropuerto origen) {
+	public void setOrigen(String origen) {
 		this.origen = origen;
 	}
 
@@ -57,13 +63,31 @@ public class Vuelo {
 	}
 
 
-	public Aeropuerto getDestino() {
+	public String getDestino() {
 		return destino;
 	}
 
 
-	public void setDestino(Aeropuerto destino) {
+	public void setDestino(String destino) {
 		this.destino = destino;
+	}
+	
+	public String getHoraSalida() {
+		return horaSalida;
+	}
+
+
+	public void setHorSalida(String horaSalida) {
+		this.horaSalida = horaSalida;
+	}
+	
+	public String getHoraLlegada() {
+		return horaLlegada;
+	}
+
+
+	public void setHoraLlegada(String horaLlegada) {
+		this.horaLlegada = horaLlegada;
 	}
 
 
@@ -116,6 +140,14 @@ public class Vuelo {
 		this.realizado = realizado;
 	}
 	
+	public String getIdAerolinea() {
+		return idAerolinea;
+	}
+
+
+	public void setIdAerolinea(String idAerolinea) {
+		this.idAerolinea = idAerolinea;
+	}
 	
 	
 	

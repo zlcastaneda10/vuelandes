@@ -60,7 +60,7 @@ public class DAOTablaUsuarios {
 	public ArrayList<Usuario> darUsuarios() throws SQLException, Exception {
 		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 
-		String sql = "SELECT * FROM ISIS2304B271620.SILLAS";
+		String sql = "SELECT * FROM ISIS2304B271620.USUARIO";
 
 		PreparedStatement prepStmt = conn.prepareStatement(sql);
 		recursos.add(prepStmt);
@@ -78,7 +78,6 @@ public class DAOTablaUsuarios {
 	
 	public Usuario darUsuarioPorId(int idUsuario) throws SQLException, Exception
 	{
-		ArrayList<Silla> sillas = new ArrayList<Silla>();
 		String sql = "SELECT * FROM ISIS2304B271620.USUARIO WHERE ID_AVION_PASAJEROS = '" + idUsuario + "'";
 
 		PreparedStatement prepStmt = conn.prepareStatement(sql);

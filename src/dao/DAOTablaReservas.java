@@ -61,7 +61,7 @@ public class DAOTablaReservas {
 	public ArrayList<Reserva> darReservas() throws SQLException, Exception {
 		ArrayList<Reserva> reservas = new ArrayList<Reserva>();
 
-		String sql = "SELECT * FROM ISIS2304B271620.CARGA";
+		String sql = "SELECT * FROM ISIS2304B271620.RESERVA";
 
 		PreparedStatement prepStmt = conn.prepareStatement(sql);
 		recursos.add(prepStmt);

@@ -6,11 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import vos.Carga;
-import vos.Cliente;
+import vos.Remitente;
 import vos.Viajero;
 
-public class DAOTablaClientes {
+public class DAOTablaRemitente {
 	
 	private ArrayList<Object> recursos;
 
@@ -23,7 +22,7 @@ public class DAOTablaClientes {
 	 * Método constructor que crea DAOVideo
 	 * <b>post: </b> Crea la instancia del DAO e inicializa el Arraylist de recursos
 	 */
-	public DAOTablaClientes() {
+	public DAOTablaRemitente() {
 		recursos = new ArrayList<Object>();
 	}
 
@@ -58,26 +57,32 @@ public class DAOTablaClientes {
 	 * @throws SQLException - Cualquier error que la base de datos arroje.
 	 * @throws Exception - Cualquier error que no corresponda a la base de datos
 	 */
-	public ArrayList<Cliente> darClientes() throws SQLException, Exception {
-		ArrayList<Cliente> Clientes = new ArrayList<Cliente>();
+	public ArrayList<Remitente> darRemitentes() throws SQLException, Exception {
+		ArrayList<Remitente> remitentes = new ArrayList<Remitente>();
 
-		String sql = "SELECT * FROM ISIS2304B271620.CLIENTE";
+		String sql = "SELECT * FROM ISIS2304B271620.REMITENTE";
+		String sql2 = "SELECT * FROM ISIS2304B271620.CLIENTE";
 
 		PreparedStatement prepStmt = conn.prepareStatement(sql);
 		recursos.add(prepStmt);
 		ResultSet rs = prepStmt.executeQuery();
+		
+		PreparedStatement prepStmt2 = conn.prepareStatement(sql2);
+		recursos.add(prepStmt2);
+		ResultSet rs2 = prepStmt2.executeQuery();
 
-		while (rs.next()) {
-			int id = Integer.parseInt(rs.getString("ID"));
-			String nombre = rs.getString("NOMBRE");
-			String tipoId = rs.getString("TIPO_ID");
-			int telefono = Integer.parseInt(rs.getString("TELEFONO"));
-			int idUsuario = Integer.parseInt(rs.getString("ID_USUARIO"));
-			String apellido = rs.getString("APELLIDO");
-			ArrayList<Integer> nacionalidades = darNacionalidad(id);
-			Clientes.add(new Cliente(id, nacionalidades, nombre,apellido,idUsuario, tipoId, telefono));
+		while (rs2.next() && rs.next()) {
+			int idCliente = Integer.parseInt(rs2.getString("ID"));
+			String nombre = rs2.getString("NOMBRE");
+			String tipoId = rs2.getString("TIPO_ID");
+			int telefono = Integer.parseInt(rs2.getString("TELEFONO"));
+			int idUsuario = Integer.parseInt(rs2.getString("ID_USUARIO"));
+			String apellido = rs2.getString("APELLIDO");
+			int idRemitente = Integer.parseInt(rs.getString("ID"));
+			ArrayList<Integer> nacionalidades = darNacionalidad(idCliente);
+			remitentes.add(new Remitente(idCliente, nacionalidades, nombre, apellido, idUsuario, tipoId, telefono, idRemitente));
 		}
-		return Clientes;
+		return remitentes;
 	}
 	
 	public ArrayList<Integer> darNacionalidad(int idCliente) throws SQLException, Exception{

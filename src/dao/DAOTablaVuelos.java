@@ -6,12 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import vos.Carga;
-import vos.Cliente;
-import vos.Viajero;
+import vos.Usuario;
+import vos.Vuelo;
 
-public class DAOTablaClientes {
-	
+public class DAOTablaVuelos {
+
 	private ArrayList<Object> recursos;
 
 	/**
@@ -23,7 +22,7 @@ public class DAOTablaClientes {
 	 * Método constructor que crea DAOVideo
 	 * <b>post: </b> Crea la instancia del DAO e inicializa el Arraylist de recursos
 	 */
-	public DAOTablaClientes() {
+	public DAOTablaVuelos() {
 		recursos = new ArrayList<Object>();
 	}
 
@@ -58,10 +57,10 @@ public class DAOTablaClientes {
 	 * @throws SQLException - Cualquier error que la base de datos arroje.
 	 * @throws Exception - Cualquier error que no corresponda a la base de datos
 	 */
-	public ArrayList<Cliente> darClientes() throws SQLException, Exception {
-		ArrayList<Cliente> Clientes = new ArrayList<Cliente>();
+	public ArrayList<Vuelo> darVuelos() throws SQLException, Exception {
+		ArrayList<Vuelo> vuelos = new ArrayList<Vuelo>();
 
-		String sql = "SELECT * FROM ISIS2304B271620.CLIENTE";
+		String sql = "SELECT * FROM ISIS2304B271620.SERVICIOS_TRANSPORTE";
 
 		PreparedStatement prepStmt = conn.prepareStatement(sql);
 		recursos.add(prepStmt);
@@ -69,32 +68,19 @@ public class DAOTablaClientes {
 
 		while (rs.next()) {
 			int id = Integer.parseInt(rs.getString("ID"));
-			String nombre = rs.getString("NOMBRE");
-			String tipoId = rs.getString("TIPO_ID");
-			int telefono = Integer.parseInt(rs.getString("TELEFONO"));
-			int idUsuario = Integer.parseInt(rs.getString("ID_USUARIO"));
-			String apellido = rs.getString("APELLIDO");
-			ArrayList<Integer> nacionalidades = darNacionalidad(id);
-			Clientes.add(new Cliente(id, nacionalidades, nombre,apellido,idUsuario, tipoId, telefono));
+			String aeropuertoOrigen = rs.getString("AEROPUERTO_ORIGEN");
+			String tipoCarga = rs.getString("TIPO_CARGA");
+			String aeropuertoDestino = rs.getString("AEROPUERTO_DESTINO");
+			String horaSalida = rs.getString("HORA_SALIDA");
+			String horaLlegada = rs.getString("HORA_LLEGADA");
+			int frecuencia =Integer.parseInt(rs.getString("FRECUENCIA"));
+			int distancia = Integer.parseInt(rs.getString("DISTANCIA_MILLAS"));
+			String duracion = rs.getString("DURACION");
+			String tipoCobertura = rs.getString("TIPO_COBERTURA");
+			char realizado = rs.getString("REALIZADO").charAt(0);
+			String idAerolinea = rs.getString("ID_AEROLINEA");
+			vuelos.add(new Vuelo(id, aeropuertoOrigen, tipoCarga, aeropuertoDestino, horaSalida, horaLlegada, frecuencia, distancia, duracion, tipoCobertura, realizado, idAerolinea));
 		}
-		return Clientes;
+		return vuelos;
 	}
-	
-	public ArrayList<Integer> darNacionalidad(int idCliente) throws SQLException, Exception{
-		ArrayList<Integer> Nacionalidades = new ArrayList<Integer>();
-
-		String sql = "SELECT * FROM ISIS2304B271620.NACIONALIDAD WHERE ID_CLIENTE = "+ idCliente;
-
-		PreparedStatement prepStmt = conn.prepareStatement(sql);
-		recursos.add(prepStmt);
-		ResultSet rs = prepStmt.executeQuery();
-
-		while (rs.next()) {
-			int idPais = Integer.parseInt(rs.getString("ID_PAIS"));
-			
-			Nacionalidades.add(idPais);
-		}
-		return Nacionalidades;
-	}
-
 }
