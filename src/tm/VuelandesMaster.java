@@ -160,14 +160,14 @@ public class VuelandesMaster {
 	 * @throws Exception -  cualquier error que se genere durante la transacción
 	 */
 	public ListaAerolinea buscarAerolineaPorID (String id) throws Exception {
-		ArrayList<Aerolinea> aerolineas;
+		ArrayList<Aerolinea> aerolineas = new ArrayList<Aerolinea>();
 		DAOTablaAerolineas daoAerolineas = new DAOTablaAerolineas();
 		try 
 		{
 			//////Transacción
 			this.conn = darConexion();
 			daoAerolineas.setConn(conn);
-			aerolineas = daoAerolineas.buscarAerolineaPorID(id);
+			aerolineas.add(daoAerolineas.buscarAerolineaPorId(id));
 
 		} catch (SQLException e) {
 			System.err.println("SQLException:" + e.getMessage());
