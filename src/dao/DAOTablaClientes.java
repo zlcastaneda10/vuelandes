@@ -80,6 +80,25 @@ public class DAOTablaClientes {
 		return Clientes;
 	}
 	
+	public Cliente buscarClientePorId(int idCliente) throws SQLException, Exception
+	{
+		String sql = "SELECT * FROM ISIS2304B271620.CLIENTE WHERE ID = "+ idCliente;
+
+		PreparedStatement prepStmt = conn.prepareStatement(sql);
+		recursos.add(prepStmt);
+		ResultSet rs = prepStmt.executeQuery();
+		rs.next();
+		int id = Integer.parseInt(rs.getString("ID"));
+		String nombre = rs.getString("NOMBRE");
+		String tipoId = rs.getString("TIPO_ID");
+		int telefono = Integer.parseInt(rs.getString("TELEFONO"));
+		int idUsuario = Integer.parseInt(rs.getString("ID_USUARIO"));
+		String apellido = rs.getString("APELLIDO");
+		ArrayList<Integer> nacionalidades = darNacionalidad(id);
+		return new Cliente(id, nacionalidades, nombre, apellido, idUsuario, tipoId, telefono);
+		
+	}
+	
 	public ArrayList<Integer> darNacionalidad(int idCliente) throws SQLException, Exception{
 		ArrayList<Integer> Nacionalidades = new ArrayList<Integer>();
 
