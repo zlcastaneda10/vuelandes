@@ -53,7 +53,6 @@ public class VideoAndesVideosServices {
 		return context.getRealPath("WEB-INF/ConnectionData");
 	}
 	
-	
 	private String doErrorMessage(Exception e){
 		return "{ \"ERROR\": \""+ e.getMessage() + "\"}" ;
 	}
