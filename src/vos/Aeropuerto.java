@@ -1,29 +1,27 @@
 package vos;
 
 public class Aeropuerto {
-	private int aeropuerto;
+	private String id;
 	private int capacidad;
 	private String tipoVuelos;
 	private String nombre;
-	private String codigo;
 	private int idCiudad;
 	
-	public Aeropuerto(int aeropuerto, int capacidad, String tipoVuelos, String nombre, String codigo, int idCiudad) {
+	public Aeropuerto(String id, int capacidad, String tipoVuelos, String nombre, int idCiudad) {
 		super();
-		this.aeropuerto = aeropuerto;
+		this.id = id;
 		this.capacidad = capacidad;
 		this.tipoVuelos = tipoVuelos;
 		this.nombre = nombre;
-		this.codigo = codigo;
 		this.idCiudad = idCiudad;
 	}
 
-	public int getAeropuerto() {
-		return aeropuerto;
+	public String getid() {
+		return id;
 	}
 
-	public void setAeropuerto(int aeropuerto) {
-		this.aeropuerto = aeropuerto;
+	public void setid(String id) {
+		this.id = id;
 	}
 
 	public int getCapacidad() {
@@ -48,14 +46,6 @@ public class Aeropuerto {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-
-	public String getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
 	}
 
 	public int getIdCiudad() {

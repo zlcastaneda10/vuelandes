@@ -8,10 +8,9 @@ public class AvionCarga extends Avion{
 	private double capacidadCarga;
 
 
-	public AvionCarga(int idAvion, String marca, String modelo, String numSerie, int fabricacion, int idCarga,
-			double costoPorUnidad, double capacidadCarga) {
-		super(idAvion, marca, modelo, numSerie, fabricacion);
-		this.idCarga = idCarga;
+	public AvionCarga(String numSerie, String marca, String modelo, int fabricacion,
+			double costoPorUnidad, double capacidadCarga, String aerolinea) {
+		super(numSerie, marca, modelo, fabricacion,aerolinea);
 		this.costoPorUnidad = costoPorUnidad;
 		this.capacidadCarga = capacidadCarga;
 	}

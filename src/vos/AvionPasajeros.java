@@ -2,11 +2,12 @@ package vos;
 
 import java.util.ArrayList;
 
-public class AvionPasajeros {
+public class AvionPasajeros extends Avion
+{
 	ArrayList<Silla> listaSillas;
 
-	public AvionPasajeros(ArrayList<Silla> listaSillas) {
-		super();
+	public AvionPasajeros(String numSerie, String marca, String modelo, int fabricacion,String aerolinea, ArrayList<Silla> listaSillas) {
+		super(numSerie, marca, modelo, fabricacion, aerolinea);
 		this.listaSillas = listaSillas;
 	}
 

@@ -1,27 +1,28 @@
 package vos;
 
 public abstract class Avion {
-	private int idAvion;
+	private String numSerie;
 	private String marca;
 	private String modelo;
-	private String numSerie;
 	private int fabricacion;
+	private String aerolinea;
 	
-	public Avion(int idAvion, String marca, String modelo, String numSerie, int fabricacion) {
+	public Avion(String numSerie, String marca, String modelo, int fabricacion, String aerolinea) {
 		super();
-		this.idAvion = idAvion;
+		this.numSerie = numSerie;
 		this.marca = marca;
 		this.modelo = modelo;
 		this.numSerie = numSerie;
 		this.fabricacion = fabricacion;
+		this.aerolinea = aerolinea;
 	}
 
-	public int getIdAvion() {
-		return idAvion;
+	public String getnumSerie() {
+		return numSerie;
 	}
 
-	public void setIdAvion(int idAvion) {
-		this.idAvion = idAvion;
+	public void setIdAvion(String numSerie) {
+		this.numSerie = numSerie;
 	}
 
 	public String getMarca() {
@@ -56,7 +57,13 @@ public abstract class Avion {
 		this.fabricacion = fabricacion;
 	}
 	
-	
+	public String getAerolinea() {
+		return aerolinea;
+	}
+
+	public void setAerolinea(String aerolinea) {
+		this.aerolinea = aerolinea;
+	}
 	
 	
 }
