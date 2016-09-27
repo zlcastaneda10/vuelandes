@@ -111,5 +111,34 @@ public class DAOTablaVuelos {
 		return vuelos;
 	}
 	
+	public Vuelo darVueloMasReservado() throws SQLException, Exception {
+		ArrayList<Vuelo> vuelos = new ArrayList<Vuelo>();
+
+		String sql = "SELECT * FROM SERVICIOS_TRANSPORTE WHERE SERVICIOS_TRANSPORTE.ID IN"
+				+ "(SELECT ID_SERVICIO FROM RESERVA GROUP BY ID_SERVICIO HAVING COUNT(*)= "
+				+ "(SELECT MAX(COUNT(*)) FROM RESERVA GROUP BY ID_SERVICIO))";
+
+		PreparedStatement prepStmt = conn.prepareStatement(sql);
+		recursos.add(prepStmt);
+		ResultSet rs = prepStmt.executeQuery();
+		rs.next();
+		int id = Integer.parseInt(rs.getString("ID"));
+		String aeropuertoOrigen = rs.getString("AEROPUERTO_ORIGEN");
+		String tipoCarga = rs.getString("TIPO_CARGA");
+		String aeropuertoDestino = rs.getString("AEROPUERTO_DESTINO");
+		String horaSalida = rs.getString("HORA_SALIDA");
+		String horaLlegada = rs.getString("HORA_LLEGADA");
+		int frecuencia =Integer.parseInt(rs.getString("FRECUENCIA"));
+		int distancia = Integer.parseInt(rs.getString("DISTANCIA_MILLAS"));
+		String duracion = rs.getString("DURACION");
+		String tipoCobertura = rs.getString("TIPO_COBERTURA");
+		char realizado = rs.getString("REALIZADO").charAt(0);
+		String idAerolinea = rs.getString("ID_AEROLINEA");
+		return new Vuelo(id, aeropuertoOrigen, tipoCarga, aeropuertoDestino, horaSalida, horaLlegada, frecuencia, distancia, duracion, tipoCobertura, realizado, idAerolinea);
+			
+			
+		
+	}
+	
 	
 }
