@@ -18,6 +18,8 @@ public class DAOTablaAvionPasajeros {
 	 * Atributo que genera la conexión a la base de datos
 	 */
 	private Connection conn;
+	
+	private DAOTablaSillas daoSillas;
 
 	/**
 	 * Método constructor que crea DAOVideo
@@ -74,29 +76,12 @@ public class DAOTablaAvionPasajeros {
 			int añoFabricacion = Integer.parseInt(rs.getString("AÑO_FABRICACION"));
 			//capacidad de sillas?
 			String aerolinea = rs.getString("AEROLINEA");
-			ArrayList<Silla> listaSillas = darSillasAvion(numeroSerie);
+			ArrayList<Silla> listaSillas = daoSillas.darSillasPorAvion(numeroSerie);
 			avionesPasajeros.add(new AvionPasajeros(numeroSerie, marca, modelo, añoFabricacion, aerolinea, listaSillas));
 		}
 		return avionesPasajeros;
 	}
 	
-	public ArrayList<Silla> darSillasAvion(String numSerieAvion) throws SQLException, Exception
-	{
-		ArrayList<Silla> sillas = new ArrayList<Silla>();
-		String sql = "SELECT * FROM ISIS2304B271620.SILLAS WHERE ID_AVION_PASAJEROS = '" + numSerieAvion + "'";
-
-		PreparedStatement prepStmt = conn.prepareStatement(sql);
-		recursos.add(prepStmt);
-		ResultSet rs = prepStmt.executeQuery();
-
-		while (rs.next()) {
-			int id = Integer.parseInt(rs.getString("ID"));
-			String clase = rs.getString("CLASE");
-			int precio = Integer.parseInt(rs.getString("PRECIO"));
-			
-			sillas.add(new Silla(id, clase, precio));
-		}
-		return sillas;
-	}
+	
 
 }

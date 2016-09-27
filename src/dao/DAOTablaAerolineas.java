@@ -70,6 +70,21 @@ public class DAOTablaAerolineas {
 		}
 		return aerolineas;
 	}
+	
+	public Aerolinea buscarAerolineaPorId(String idAerolinea) throws SQLException, Exception
+	{
+		String sql = "SELECT * FROM ISIS2304B271620.AEROLINEA WHERE IATA = '" + idAerolinea + "'";
+
+		PreparedStatement prepStmt = conn.prepareStatement(sql);
+		recursos.add(prepStmt);
+		ResultSet rs = prepStmt.executeQuery();
+		rs.next();
+		String iata = rs.getString("IATA");
+		String nombre = rs.getString("NOMBRE");
+		String codigo = rs.getString("CODIGO");
+		int idPais = Integer.parseInt(rs.getString("ID_PAIS"));
+		return new Aerolinea(iata, nombre, codigo, idPais);
+	}
 
 
 }

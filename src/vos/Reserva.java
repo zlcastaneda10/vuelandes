@@ -4,12 +4,12 @@ import java.util.Date;
 
 public class Reserva {
 	private int id;
-	private Vuelo servicioTranspote;
+	private int servicioTranspote;
 	//verificar date util o sql
 	private Date fecha;
 	private char  ckeckIn;
 	
-	public Reserva(int id, Vuelo servicioTranspote, Date fecha, char ckeckIn) {
+	public Reserva(int id, int servicioTranspote, Date fecha, char ckeckIn) {
 		super();
 		this.id = id;
 		this.servicioTranspote = servicioTranspote;
@@ -25,11 +25,11 @@ public class Reserva {
 		this.id = id;
 	}
 
-	public Vuelo getServicioTranspote() {
+	public int getServicioTranspote() {
 		return servicioTranspote;
 	}
 
-	public void setServicioTranspote(Vuelo servicioTranspote) {
+	public void setServicioTranspote(int servicioTranspote) {
 		this.servicioTranspote = servicioTranspote;
 	}
 

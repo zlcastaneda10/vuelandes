@@ -1,17 +1,16 @@
 package dao;
 
 import java.sql.Connection;
-import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import vos.Cliente;
-import vos.Reserva;
+import vos.Silla;
+import vos.Usuario;
 
-public class DAOTablaReservas {
-
+public class DAOTablaUsuarios {
+	
 	private ArrayList<Object> recursos;
 
 	/**
@@ -23,7 +22,7 @@ public class DAOTablaReservas {
 	 * Método constructor que crea DAOVideo
 	 * <b>post: </b> Crea la instancia del DAO e inicializa el Arraylist de recursos
 	 */
-	public DAOTablaReservas() {
+	public DAOTablaUsuarios() {
 		recursos = new ArrayList<Object>();
 	}
 
@@ -58,10 +57,10 @@ public class DAOTablaReservas {
 	 * @throws SQLException - Cualquier error que la base de datos arroje.
 	 * @throws Exception - Cualquier error que no corresponda a la base de datos
 	 */
-	public ArrayList<Reserva> darReservas() throws SQLException, Exception {
-		ArrayList<Reserva> reservas = new ArrayList<Reserva>();
+	public ArrayList<Usuario> darUsuarios() throws SQLException, Exception {
+		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 
-		String sql = "SELECT * FROM ISIS2304B271620.CARGA";
+		String sql = "SELECT * FROM ISIS2304B271620.SILLAS";
 
 		PreparedStatement prepStmt = conn.prepareStatement(sql);
 		recursos.add(prepStmt);
@@ -69,13 +68,29 @@ public class DAOTablaReservas {
 
 		while (rs.next()) {
 			int id = Integer.parseInt(rs.getString("ID"));
-			int idServicio = Integer.parseInt(rs.getString("ID_SERVICIO"));
-			java.sql.Date dbSqlDate = rs.getDate("FECHA");
-			java.util.Date dbSqlDateConverted = new java.util.Date(dbSqlDate.getTime());
-			char checkIn = rs.getString("CHECK_IN").charAt(0);
-			reservas.add(new Reserva(id, idServicio, dbSqlDateConverted, checkIn));
+			String username = rs.getString("USERNAME");
+			String password = rs.getString("PASSWORD");
+			String email = rs.getString("E_MAIL");
+			usuarios.add(new Usuario(id, username, password, email));
 		}
-		return reservas;
+		return usuarios;
+	}
+	
+	public Usuario darUsuarioPorId(int idUsuario) throws SQLException, Exception
+	{
+		ArrayList<Silla> sillas = new ArrayList<Silla>();
+		String sql = "SELECT * FROM ISIS2304B271620.USUARIO WHERE ID_AVION_PASAJEROS = '" + idUsuario + "'";
+
+		PreparedStatement prepStmt = conn.prepareStatement(sql);
+		recursos.add(prepStmt);
+		ResultSet rs = prepStmt.executeQuery();
+		rs.next();
+		int id = Integer.parseInt(rs.getString("ID"));
+		String username = rs.getString("USERNAME");
+		String password = rs.getString("PASSWORD");
+		String email = rs.getString("E_MAIL");
+		return new Usuario(id, username, password, email);
+		
 	}
 
 }

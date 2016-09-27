@@ -1,17 +1,16 @@
 package dao;
 
 import java.sql.Connection;
-import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import vos.Cliente;
 import vos.Reserva;
+import vos.Silla;
 
-public class DAOTablaReservas {
-
+public class DAOTablaSillas {
+	
 	private ArrayList<Object> recursos;
 
 	/**
@@ -23,7 +22,7 @@ public class DAOTablaReservas {
 	 * Método constructor que crea DAOVideo
 	 * <b>post: </b> Crea la instancia del DAO e inicializa el Arraylist de recursos
 	 */
-	public DAOTablaReservas() {
+	public DAOTablaSillas() {
 		recursos = new ArrayList<Object>();
 	}
 
@@ -58,10 +57,10 @@ public class DAOTablaReservas {
 	 * @throws SQLException - Cualquier error que la base de datos arroje.
 	 * @throws Exception - Cualquier error que no corresponda a la base de datos
 	 */
-	public ArrayList<Reserva> darReservas() throws SQLException, Exception {
-		ArrayList<Reserva> reservas = new ArrayList<Reserva>();
+	public ArrayList<Silla> darSillas() throws SQLException, Exception {
+		ArrayList<Silla> sillas = new ArrayList<Silla>();
 
-		String sql = "SELECT * FROM ISIS2304B271620.CARGA";
+		String sql = "SELECT * FROM ISIS2304B271620.SILLAS";
 
 		PreparedStatement prepStmt = conn.prepareStatement(sql);
 		recursos.add(prepStmt);
@@ -69,13 +68,32 @@ public class DAOTablaReservas {
 
 		while (rs.next()) {
 			int id = Integer.parseInt(rs.getString("ID"));
-			int idServicio = Integer.parseInt(rs.getString("ID_SERVICIO"));
-			java.sql.Date dbSqlDate = rs.getDate("FECHA");
-			java.util.Date dbSqlDateConverted = new java.util.Date(dbSqlDate.getTime());
-			char checkIn = rs.getString("CHECK_IN").charAt(0);
-			reservas.add(new Reserva(id, idServicio, dbSqlDateConverted, checkIn));
+			String clase = rs.getString("CLASE");
+			int precio = Integer.parseInt(rs.getString("PRECIO"));
+			String idAvion = rs.getString("ID_AVION_PASAJEROS");
+			sillas.add(new Silla(id, clase, precio,idAvion));
 		}
-		return reservas;
+		return sillas;
 	}
+	
+	public ArrayList<Silla> darSillasPorAvion(String numSerieAvion) throws SQLException, Exception
+	{
+		ArrayList<Silla> sillas = new ArrayList<Silla>();
+		String sql = "SELECT * FROM ISIS2304B271620.SILLAS WHERE ID_AVION_PASAJEROS = '" + numSerieAvion + "'";
+
+		PreparedStatement prepStmt = conn.prepareStatement(sql);
+		recursos.add(prepStmt);
+		ResultSet rs = prepStmt.executeQuery();
+
+		while (rs.next()) {
+			int id = Integer.parseInt(rs.getString("ID"));
+			String clase = rs.getString("CLASE");
+			int precio = Integer.parseInt(rs.getString("PRECIO"));
+			
+			sillas.add(new Silla(id, clase, precio,numSerieAvion));
+		}
+		return sillas;
+	}
+
 
 }
