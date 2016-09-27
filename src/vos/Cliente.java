@@ -1,23 +1,27 @@
 package vos;
 
+import java.util.ArrayList;
+
 public class Cliente {
 	
 
 	private int id;
-	private  int idNacionalidad;
+	private  ArrayList<Integer> idNacionalidad;
 	private String nombre;
+	private String apellido;
 	private String tipoIdentificacion;
-	private int identificacion;
-	private String telefono;
+	private int idUsuario;
+	private int telefono;
 	
-	public Cliente(int id, int idNacionalidad, String nombre, String tipoIdentificacion, int identificacion,
-			String telefono) {
+	public Cliente(int id, ArrayList<Integer> idNacionalidad, String nombre, String apellido,int idUsuario, String tipoIdentificacion, 
+			int telefono) {
 		super();
 		this.id = id;
 		this.idNacionalidad = idNacionalidad;
 		this.nombre = nombre;
+		this.apellido = apellido;
+		this.idUsuario = idUsuario;
 		this.tipoIdentificacion = tipoIdentificacion;
-		this.identificacion = identificacion;
 		this.telefono = telefono;
 	}
 
@@ -29,11 +33,11 @@ public class Cliente {
 		this.id = id;
 	}
 
-	public int getIdNacionalidad() {
+	public ArrayList<Integer> getIdNacionalidad() {
 		return idNacionalidad;
 	}
 
-	public void setIdNacionalidad(int idNacionalidad) {
+	public void setIdNacionalidad(ArrayList<Integer> idNacionalidad) {
 		this.idNacionalidad = idNacionalidad;
 	}
 
@@ -44,6 +48,22 @@ public class Cliente {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+	
+	public int getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(int idUsuario) {
+		this.idUsuario = idUsuario;
+	}
 
 	public String getTipoIdentificacion() {
 		return tipoIdentificacion;
@@ -53,19 +73,11 @@ public class Cliente {
 		this.tipoIdentificacion = tipoIdentificacion;
 	}
 
-	public int getIdentificacion() {
-		return identificacion;
-	}
-
-	public void setIdentificacion(int identificacion) {
-		this.identificacion = identificacion;
-	}
-
-	public String getTelefono() {
+	public int getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(String telefono) {
+	public void setTelefono(int telefono) {
 		this.telefono = telefono;
 	}
 	

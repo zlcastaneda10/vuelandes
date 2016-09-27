@@ -6,21 +6,11 @@ public class Ciudad {
 
 	private String name;
 
-	private int duration;
-
-	public Ciudad(int id, String name, int duration) {
-		super();
+	public Ciudad(int id, String name) {
+		
 		this.id = id;
 		this.name = name;
-		this.duration = duration;
-	}
-
-	public int getDuration() {
-		return duration;
-	}
-
-	public void setDuration(int duration) {
-		this.duration = duration;
+		
 	}
 
 	public int getId() {
