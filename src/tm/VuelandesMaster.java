@@ -19,11 +19,17 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import dao.DAOTablaAerolineas;
+import dao.DAOTablaClientes;
 import dao.DAOTablaVideos;
+import dao.DAOTablaVuelos;
 import vos.Video;
+import vos.Vuelo;
 import vos.Aerolinea;
+import vos.Cliente;
 import vos.ListaAerolinea;
+import vos.ListaClientes;
 import vos.ListaVideos;
+import vos.ListaVuelos;
 
 /**
  * Fachada en patron singleton de la aplicaci√≥n
@@ -190,6 +196,144 @@ public class VuelandesMaster {
 		}
 		return new ListaAerolinea(aerolineas);
 	}
+	
+	/*CLIENTES*/
+	
+	
+	public ListaClientes darClientes() throws Exception {
+		ArrayList<Cliente> clientes;
+		DAOTablaClientes daoClientes = new DAOTablaClientes();
+		try 
+		{
+			//////TransacciÛn
+			this.conn = darConexion();
+			daoClientes.setConn(conn);
+			clientes = daoClientes.darClientes();
+
+		} catch (SQLException e) {
+			System.err.println("SQLException:" + e.getMessage());
+			e.printStackTrace();
+			throw e;
+		} catch (Exception e) {
+			System.err.println("GeneralException:" + e.getMessage());
+			e.printStackTrace();
+			throw e;
+		} finally {
+			try {
+				daoClientes.cerrarRecursos();
+				if(this.conn!=null)
+					this.conn.close();
+			} catch (SQLException exception) {
+				System.err.println("SQLException closing resources:" + exception.getMessage());
+				exception.printStackTrace();
+				throw exception;
+			}
+		}
+		return new ListaClientes(clientes);
+	}
+	
+	
+	 
+	public ListaClientes buscarClientePorID (int id) throws Exception {
+		ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+		DAOTablaClientes daoClientes = new DAOTablaClientes();
+		try 
+		{
+			//////Transacci√≥n
+			this.conn = darConexion();
+			daoClientes.setConn(conn);
+			clientes.add(daoClientes.buscarClientePorId(id));
+
+		} catch (SQLException e) {
+			System.err.println("SQLException:" + e.getMessage());
+			e.printStackTrace();
+			throw e;
+		} catch (Exception e) {
+			System.err.println("GeneralException:" + e.getMessage());
+			e.printStackTrace();
+			throw e;
+		} finally {
+			try {
+				daoClientes.cerrarRecursos();
+				if(this.conn!=null)
+					this.conn.close();
+			} catch (SQLException exception) {
+				System.err.println("SQLException closing resources:" + exception.getMessage());
+				exception.printStackTrace();
+				throw exception;
+			}
+		}
+		return new ListaClientes(clientes);
+	}
+
+	/*VUELOS*/
+	public ListaVuelos darVuelos() throws Exception {
+		ArrayList<Vuelo> vuelos;
+		DAOTablaVuelos daoVuelos = new DAOTablaVuelos();
+		try 
+		{
+			//////TransacciÛn
+			this.conn = darConexion();
+			daoVuelos.setConn(conn);
+			vuelos = daoVuelos.darVuelos();
+
+		} catch (SQLException e) {
+			System.err.println("SQLException:" + e.getMessage());
+			e.printStackTrace();
+			throw e;
+		} catch (Exception e) {
+			System.err.println("GeneralException:" + e.getMessage());
+			e.printStackTrace();
+			throw e;
+		} finally {
+			try {
+				daoVuelos.cerrarRecursos();
+				if(this.conn!=null)
+					this.conn.close();
+			} catch (SQLException exception) {
+				System.err.println("SQLException closing resources:" + exception.getMessage());
+				exception.printStackTrace();
+				throw exception;
+			}
+		}
+		return new ListaVuelos(vuelos);
+	}
+	
+	
+	 
+	public ListaVuelos buscarVueloPorIdAerolinea (String id) throws Exception {
+		
+		ArrayList<Vuelo> vuelos = new ArrayList<Vuelo>();
+		DAOTablaVuelos daoVuelos = new DAOTablaVuelos();
+		
+		try 
+		{
+			//////Transacci√≥n
+			this.conn = darConexion();
+			daoVuelos.setConn(conn);
+			vuelos = daoVuelos.buscarVuelosPorIdAerolinea(id);
+
+		} catch (SQLException e) {
+			System.err.println("SQLException:" + e.getMessage());
+			e.printStackTrace();
+			throw e;
+		} catch (Exception e) {
+			System.err.println("GeneralException:" + e.getMessage());
+			e.printStackTrace();
+			throw e;
+		} finally {
+			try {
+				daoVuelos.cerrarRecursos();
+				if(this.conn!=null)
+					this.conn.close();
+			} catch (SQLException exception) {
+				System.err.println("SQLException closing resources:" + exception.getMessage());
+				exception.printStackTrace();
+				throw exception;
+			}
+		}
+		return n
+	
 	
 
 }

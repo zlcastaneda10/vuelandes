@@ -28,15 +28,15 @@ import org.codehaus.jackson.map.ObjectMapper;
 import tm.VideoAndesMaster;
 import tm.VuelandesMaster;
 import vos.Video;
-import vos.ListaAerolinea;
+import vos.ListaClientes;
 import vos.ListaVideos;
 
 /**
  * Clase que expone servicios REST con ruta base: http://"ip o nombre de host":8080/VideoAndes/rest/videos/...
  * @author Juan
  */
-@Path("aerolineas")
-public class VuelandesAerolineasServices {
+@Path("clientes")
+public class VuelandesClientesServices {
 
 	// Servicios REST tipo GET:
 
@@ -68,15 +68,15 @@ public class VuelandesAerolineasServices {
 	 */
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response getAerolineas() {
+	public Response getClientes() {
 		VuelandesMaster tm = new VuelandesMaster(getPath());
-		ListaAerolinea aerolineas;
+		ListaClientes clientes;
 		try {
-			aerolineas = tm.darAerolineas();
+			clientes = tm.darClientes();
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
-		return Response.status(200).entity(aerolineas).build();
+		return Response.status(200).entity(clientes).build();
 	}
 
 
@@ -87,23 +87,21 @@ public class VuelandesAerolineasServices {
      * @return Json con el/los videos encontrados con el nombre que entra como parámetro o json con 
      * el error que se produjo
      */
+	
 	@GET
 	@Path("/id/{id}")
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response getVideoName(@javax.ws.rs.PathParam("id") String id) {
+	public Response getclienteId(@javax.ws.rs.PathParam("id") int id) {
 		VuelandesMaster tm = new VuelandesMaster(getPath());
-		ListaAerolinea aerolineas;
+		ListaClientes clientes;
 		try {
-			if (id == null || id.length() == 0)
-				throw new Exception("Nombre de aerolinea  no valido");
-			aerolineas = tm.buscarAerolineaPorID(id);
+			clientes = tm.buscarClientePorID(id);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
-		return Response.status(200).entity(aerolineas).build();
+		return Response.status(200).entity(clientes).build();
 	}
 	
-   
 
 
 }

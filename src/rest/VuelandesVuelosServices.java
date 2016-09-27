@@ -30,13 +30,14 @@ import tm.VuelandesMaster;
 import vos.Video;
 import vos.ListaAerolinea;
 import vos.ListaVideos;
+import vos.ListaVuelos;
 
 /**
  * Clase que expone servicios REST con ruta base: http://"ip o nombre de host":8080/VideoAndes/rest/videos/...
  * @author Juan
  */
-@Path("aerolineas")
-public class VuelandesAerolineasServices {
+@Path("vuelos")
+public class VuelandesVuelosServices {
 
 	// Servicios REST tipo GET:
 
@@ -68,15 +69,15 @@ public class VuelandesAerolineasServices {
 	 */
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response getAerolineas() {
+	public Response getVuelos() {
 		VuelandesMaster tm = new VuelandesMaster(getPath());
-		ListaAerolinea aerolineas;
+		ListaVuelos vuelos;
 		try {
-			aerolineas = tm.darAerolineas();
+			vuelos = tm.darVuelos();
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
-		return Response.status(200).entity(aerolineas).build();
+		return Response.status(200).entity(vuelos).build();
 	}
 
 
@@ -90,17 +91,17 @@ public class VuelandesAerolineasServices {
 	@GET
 	@Path("/id/{id}")
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response getVideoName(@javax.ws.rs.PathParam("id") String id) {
+	public Response getVuelosPorIdAerolinea(@javax.ws.rs.PathParam("id") String id) {
 		VuelandesMaster tm = new VuelandesMaster(getPath());
-		ListaAerolinea aerolineas;
+		ListaVuelos vuelos;
 		try {
 			if (id == null || id.length() == 0)
 				throw new Exception("Nombre de aerolinea  no valido");
-			aerolineas = tm.buscarAerolineaPorID(id);
+			vuelos = tm.buscarVueloPorIdAerolinea(id);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
-		return Response.status(200).entity(aerolineas).build();
+		return Response.status(200).entity(vuelos).build();
 	}
 	
    
