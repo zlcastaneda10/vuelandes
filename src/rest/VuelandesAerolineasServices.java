@@ -26,7 +26,9 @@ import javax.ws.rs.core.Response;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import tm.VideoAndesMaster;
+import tm.VuelandesMaster;
 import vos.Video;
+import vos.ListaAerolinea;
 import vos.ListaVideos;
 
 /**
@@ -66,15 +68,15 @@ public class VuelandesAerolineasServices {
 	 */
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response getVideos() {
-		VideoAndesMaster tm = new VideoAndesMaster(getPath());
-		ListaVideos videos;
+	public Response getAerolineas() {
+		VuelandesMaster tm = new VuelandesMaster(getPath());
+		ListaAerolinea aerolineas;
 		try {
-			videos = tm.darVideos();
+			aerolineas = tm.darAerolineas();
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
-		return Response.status(200).entity(videos).build();
+		return Response.status(200).entity(aerolineas).build();
 	}
 
 
@@ -86,19 +88,19 @@ public class VuelandesAerolineasServices {
      * el error que se produjo
      */
 	@GET
-	@Path("/name/{name}")
+	@Path("/id/{id}")
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response getVideoName(@javax.ws.rs.PathParam("name") String name) {
-		VideoAndesMaster tm = new VideoAndesMaster(getPath());
-		ListaVideos videos;
+	public Response getVideoName(@javax.ws.rs.PathParam("id") String id) {
+		VuelandesMaster tm = new VuelandesMaster(getPath());
+		ListaAerolinea aerolineas;
 		try {
-			if (name == null || name.length() == 0)
-				throw new Exception("Nombre del video no valido");
-			videos = tm.buscarVideosPorName(name);
+			if (id == null || id.length() == 0)
+				throw new Exception("Nombre de aerolinea  no valido");
+			aerolineas = tm.buscarAerolineaPorID(id);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
-		return Response.status(200).entity(videos).build();
+		return Response.status(200).entity(aerolineas).build();
 	}
 	
     /**
