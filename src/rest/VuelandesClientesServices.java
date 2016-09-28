@@ -103,27 +103,6 @@ public class VuelandesClientesServices {
 		}
 		return Response.status(200).entity(clientes).build();
 	}
-	
-<<<<<<< HEAD
-	
-	@PUT
-	@Path("/id/{id}/agregarReserva")
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response addReserva(Reserva reserva) {
-		VuelandesMaster tm = new VuelandesMaster(getPath());
-		try {
-			tm.addReserva(reserva);
-		} catch (Exception e) {
-			return Response.status(500).entity(doErrorMessage(e)).build();
-		}
-		return Response.status(200).entity(reserva).build();
-	}
-	
-	
-=======
-
->>>>>>> origin/master
 
 
 }
