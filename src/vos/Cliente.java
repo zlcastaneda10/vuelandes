@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Cliente {
 	
 
-	private int id;
+	private Long id;
 	private  ArrayList<Integer> idNacionalidad;
 	private String nombre;
 	private String apellido;
@@ -13,7 +13,7 @@ public class Cliente {
 	private int idUsuario;
 	private int telefono;
 	
-	public Cliente(int id, ArrayList<Integer> idNacionalidad, String nombre, String apellido,int idUsuario, String tipoIdentificacion, 
+	public Cliente(Long id, ArrayList<Integer> idNacionalidad, String nombre, String apellido,int idUsuario, String tipoIdentificacion, 
 			int telefono) {
 		super();
 		this.id = id;
@@ -25,11 +25,11 @@ public class Cliente {
 		this.telefono = telefono;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

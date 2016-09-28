@@ -73,11 +73,11 @@ public class DAOTablaAvionPasajeros {
 			String numeroSerie = rs.getString("NUMERO_SERIE");
 			String marca = rs.getString("MARCA");
 			String modelo = rs.getString("MODELO");
-			int añoFabricacion = Integer.parseInt(rs.getString("AÑO_FABRICACION"));
+			int anioFabricacion = Integer.parseInt(rs.getString("AÑO_FABRICACION"));
 			//capacidad de sillas?
 			String aerolinea = rs.getString("AEROLINEA");
 			ArrayList<Silla> listaSillas = daoSillas.darSillasPorAvion(numeroSerie);
-			avionesPasajeros.add(new AvionPasajeros(numeroSerie, marca, modelo, añoFabricacion, aerolinea, listaSillas));
+			avionesPasajeros.add(new AvionPasajeros(numeroSerie, marca, modelo, anioFabricacion, aerolinea, listaSillas));
 		}
 		return avionesPasajeros;
 	}

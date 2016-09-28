@@ -68,7 +68,7 @@ public class DAOTablaClientes {
 		ResultSet rs = prepStmt.executeQuery();
 
 		while (rs.next()) {
-			int id = Integer.parseInt(rs.getString("ID"));
+			Long id = Long.parseLong(rs.getString("ID"));
 			String nombre = rs.getString("NOMBRE");
 			String tipoId = rs.getString("TIPO_ID");
 			int telefono = Integer.parseInt(rs.getString("TELEFONO"));
@@ -88,7 +88,7 @@ public class DAOTablaClientes {
 		recursos.add(prepStmt);
 		ResultSet rs = prepStmt.executeQuery();
 		rs.next();
-		int id = Integer.parseInt(rs.getString("ID"));
+		Long id = Long.parseLong(rs.getString("ID"));
 		String nombre = rs.getString("NOMBRE");
 		String tipoId = rs.getString("TIPO_ID");
 		int telefono = Integer.parseInt(rs.getString("TELEFONO"));
@@ -99,7 +99,7 @@ public class DAOTablaClientes {
 		
 	}
 	
-	public ArrayList<Integer> darNacionalidad(int idCliente) throws SQLException, Exception{
+	public ArrayList<Integer> darNacionalidad(Long idCliente) throws SQLException, Exception{
 		ArrayList<Integer> Nacionalidades = new ArrayList<Integer>();
 
 		String sql = "SELECT * FROM ISIS2304B271620.NACIONALIDAD WHERE ID_CLIENTE = "+ idCliente;

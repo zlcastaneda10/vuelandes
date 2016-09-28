@@ -6,7 +6,7 @@ public class Remitente extends Cliente {
 
 	private int idRemitente;
 	
-	public Remitente(int idCliente, ArrayList<Integer> idNacionalidad, String nombre, String apellido, int idUsuario,
+	public Remitente(Long idCliente, ArrayList<Integer> idNacionalidad, String nombre, String apellido, int idUsuario,
 			String tipoIdentificacion, int telefono, int idRemitente) {
 		super(idCliente, idNacionalidad, nombre, apellido, idUsuario, tipoIdentificacion, telefono);
 		this.idRemitente = idRemitente;
