@@ -1,0 +1,151 @@
+{
+	"variables": [],
+	"info": {
+		"name": "VuelAndes",
+		"_postman_id": "6d46b70a-a7d3-4828-56fd-6f3c743038bd",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/VideoAndes/rest/aerolineas",
+			"request": {
+				"url": "http://localhost:8080/VideoAndes/rest/aerolineas",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n      \"id\": 1200,\n      \"servicioTranspote\": 35,\n      \"fecha\": 1478754000000,\n      \"ckeckIn\": \"N\"\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/VideoAndes/rest/aerolineas/id/AAH",
+			"request": {
+				"url": "http://localhost:8080/VideoAndes/rest/aerolineas/id/AAH",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n      \"id\": 1200,\n      \"servicioTranspote\": 35,\n      \"fecha\": 1478754000000,\n      \"ckeckIn\": \"N\"\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/VideoAndes/rest/aerolineas/id/AAH/vuelos",
+			"request": {
+				"url": "http://localhost:8080/VideoAndes/rest/aerolineas/id/AAH/vuelos",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n      \"id\": 1200,\n      \"servicioTranspote\": 35,\n      \"fecha\": 1478754000000,\n      \"ckeckIn\": \"N\"\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/VideoAndes/rest/clientes",
+			"request": {
+				"url": "http://localhost:8080/VideoAndes/rest/clientes",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n      \"id\": 1200,\n      \"servicioTranspote\": 35,\n      \"fecha\": 1478754000000,\n      \"ckeckIn\": \"N\"\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/VideoAndes/rest/clientes/id/407665510",
+			"request": {
+				"url": "http://localhost:8080/VideoAndes/rest/clientes/id/407665510",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n      \"id\": 1200,\n      \"servicioTranspote\": 35,\n      \"fecha\": 1478754000000,\n      \"ckeckIn\": \"N\"\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/VideoAndes/rest/reservas",
+			"request": {
+				"url": "http://localhost:8080/VideoAndes/rest/reservas",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n      \"id\": 1200,\n      \"servicioTranspote\": 35,\n      \"fecha\": 1478754000000,\n      \"ckeckIn\": \"N\"\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/VideoAndes/rest/reservas/agregarReserva",
+			"request": {
+				"url": "http://localhost:8080/VideoAndes/rest/reservas",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n      \"id\": 1200,\n      \"servicioTranspote\": 35,\n      \"fecha\": 1478754000000,\n      \"ckeckIn\": \"N\"\n    }"
+				},
+				"description": "{\n      \"id\": 373,\n      \"fecha\": 1478754000000,\n      \"servicioTranspote\": 25,\n      \"ckeckIn\": \"Y\"\n    }"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/VideoAndes/rest/vuelos",
+			"request": {
+				"url": "http://localhost:8080/VideoAndes/rest/vuelos",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n      \"id\": 1200,\n      \"servicioTranspote\": 35,\n      \"fecha\": 1478754000000,\n      \"ckeckIn\": \"N\"\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/VideoAndes/rest/vuelos/id/120",
+			"request": {
+				"url": "http://localhost:8080/VideoAndes/rest/vuelos/id/120",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n      \"id\": 1200,\n      \"servicioTranspote\": 35,\n      \"fecha\": 1478754000000,\n      \"ckeckIn\": \"N\"\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/VideoAndes/rest/vuelos/masReservado",
+			"request": {
+				"url": "http://localhost:8080/VideoAndes/rest/vuelos/masReservado",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n      \"id\": 1200,\n      \"servicioTranspote\": 35,\n      \"fecha\": 1478754000000,\n      \"ckeckIn\": \"N\"\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
