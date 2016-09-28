@@ -332,7 +332,42 @@ public class VuelandesMaster {
 				throw exception;
 			}
 		}
-		return n
+		return new ListaVuelos(vuelos);
+	
+	}
+	
+	public Vuelo vueloMasReservado() throws Exception {
+		Vuelo masReservado;
+		DAOTablaVuelos daoVuelos = new DAOTablaVuelos();
+		try 
+		{
+			//////Transacción
+			this.conn = darConexion();
+			daoVuelos.setConn(conn);
+			masReservado = daoVuelos.darVueloMasReservado();
+
+		} catch (SQLException e) {
+			System.err.println("SQLException:" + e.getMessage());
+			e.printStackTrace();
+			throw e;
+		} catch (Exception e) {
+			System.err.println("GeneralException:" + e.getMessage());
+			e.printStackTrace();
+			throw e;
+		} finally {
+			try {
+				daoVuelos.cerrarRecursos();
+				if(this.conn!=null)
+					this.conn.close();
+			} catch (SQLException exception) {
+				System.err.println("SQLException closing resources:" + exception.getMessage());
+				exception.printStackTrace();
+				throw exception;
+			}
+		}
+		return masReservado;
+	}
+	
 	
 	
 

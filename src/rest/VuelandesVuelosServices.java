@@ -28,6 +28,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import tm.VideoAndesMaster;
 import tm.VuelandesMaster;
 import vos.Video;
+import vos.Vuelo;
 import vos.ListaAerolinea;
 import vos.ListaVideos;
 import vos.ListaVuelos;
@@ -104,7 +105,21 @@ public class VuelandesVuelosServices {
 		return Response.status(200).entity(vuelos).build();
 	}
 	
-   
+	@GET
+	@Path("/masReservado")
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response getVueloMasReservado() {
+		VuelandesMaster tm = new VuelandesMaster(getPath());
+		Vuelo masReservado = tm.;
+		try {
+			videos = tm.videosMasAlquilados();
+		} catch (Exception e) {
+			return Response.status(500).entity(doErrorMessage(e)).build();
+		}
+		return Response.status(200).entity(videos).build();
+	}
+
+
 
 
 }
