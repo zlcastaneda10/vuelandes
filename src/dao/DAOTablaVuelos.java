@@ -112,7 +112,7 @@ public class DAOTablaVuelos {
 	}
 	
 	public Vuelo darVueloMasReservado() throws SQLException, Exception {
-		ArrayList<Vuelo> vuelos = new ArrayList<Vuelo>();
+		
 
 		String sql = "SELECT * FROM SERVICIOS_TRANSPORTE WHERE SERVICIOS_TRANSPORTE.ID IN"
 				+ "(SELECT ID_SERVICIO FROM RESERVA GROUP BY ID_SERVICIO HAVING COUNT(*)= "
@@ -135,8 +135,6 @@ public class DAOTablaVuelos {
 		char realizado = rs.getString("REALIZADO").charAt(0);
 		String idAerolinea = rs.getString("ID_AEROLINEA");
 		return new Vuelo(id, aeropuertoOrigen, tipoCarga, aeropuertoDestino, horaSalida, horaLlegada, frecuencia, distancia, duracion, tipoCobertura, realizado, idAerolinea);
-			
-			
 		
 	}
 	
