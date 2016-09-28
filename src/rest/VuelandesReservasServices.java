@@ -28,7 +28,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import tm.VideoAndesMaster;
 import tm.VuelandesMaster;
 import vos.Video;
-import vos.ListaClientes;
+import vos.ListaAerolinea;
 import vos.ListaReservas;
 import vos.ListaVideos;
 import vos.Reserva;
@@ -37,8 +37,8 @@ import vos.Reserva;
  * Clase que expone servicios REST con ruta base: http://"ip o nombre de host":8080/VideoAndes/rest/videos/...
  * @author Juan
  */
-@Path("clientes")
-public class VuelandesClientesServices {
+@Path("reservas")
+public class VuelandesReservasServices {
 
 	// Servicios REST tipo GET:
 
@@ -61,50 +61,37 @@ public class VuelandesClientesServices {
 		return "{ \"ERROR\": \""+ e.getMessage() + "\"}" ;
 	}
 	
-
-	/**
-	 * Método que expone servicio REST usando GET que da todos los videos de la base de datos.
-	 * <b>URL: </b> http://"ip o nombre de host":8080/VideoAndes/rest/videos
-	 * @return Json con todos los videos de la base de datos O json con 
-     * el error que se produjo
-	 */
+	
 	@GET
+	
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response getClientes() {
+	public Response getReservasCliente() {
 		VuelandesMaster tm = new VuelandesMaster(getPath());
-		ListaClientes clientes;
+		ListaReservas reservas;
 		try {
-			clientes = tm.darClientes();
+			reservas = tm.darReservas();
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
-		return Response.status(200).entity(clientes).build();
+		return Response.status(200).entity(reservas).build();
 	}
-
-
-    /**
-     * Método que expone servicio REST usando GET que busca el video con el nombre que entra como parámetro
-     * <b>URL: </b> http://"ip o nombre de host":8080/VideoAndes/rest/videos/name/"name para la busqueda"
-     * @param name - Nombre del video a buscar que entra en la URL como parámetro 
-     * @return Json con el/los videos encontrados con el nombre que entra como parámetro o json con 
-     * el error que se produjo
-     */
 	
-	@GET
-	@Path("/id/{id}")
-	@Produces({ MediaType.APPLICATION_JSON })
-	public Response getclienteId(@javax.ws.rs.PathParam("id") int id) {
+	
+	@PUT
+	@Path("/agregarReserva")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response addReserva(Reserva reserva) {
 		VuelandesMaster tm = new VuelandesMaster(getPath());
-		ListaClientes clientes;
 		try {
-			clientes = tm.buscarClientePorID(id);
+			tm.addReserva(reserva);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
-		return Response.status(200).entity(clientes).build();
+		return Response.status(200).entity(reserva).build();
 	}
 	
-
+	
 
 
 }
