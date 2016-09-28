@@ -95,5 +95,17 @@ public class DAOTablaReservas {
 
 	}
 	
+	public void checkInReserva(int idReserva) throws SQLException, Exception {
+
+		String sql = "UPDATE ISIS2304MO11620.RESERVA SET ";
+		sql += "CHECK_IN='Y' ";
+		sql += " WHERE id = " + idReserva;
+
+		System.out.println("SQL stmt:" + sql);
+
+		PreparedStatement prepStmt = conn.prepareStatement(sql);
+		recursos.add(prepStmt);
+		prepStmt.executeQuery();
+	}
 
 }

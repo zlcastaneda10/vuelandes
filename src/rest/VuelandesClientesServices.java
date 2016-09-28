@@ -115,7 +115,7 @@ public class VuelandesClientesServices {
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
-		return Response.status(200).entity(video).build();
+		return Response.status(200).entity(reserva).build();
 	}
 	
 	
