@@ -29,6 +29,7 @@ import vos.Aerolinea;
 import vos.Cliente;
 import vos.ListaAerolinea;
 import vos.ListaClientes;
+import vos.ListaReservas;
 import vos.ListaVideos;
 import vos.ListaVuelos;
 import vos.Reserva;
@@ -399,6 +400,40 @@ public class VuelandesMaster {
 				throw exception;
 			}
 		}
+	}
+	
+	
+	
+	public ListaReservas darReservas() throws Exception {
+		ArrayList<Reserva> reservas;
+		DAOTablaReservas daoReservas = new DAOTablaReservas();
+		try 
+		{
+			//////Transacci�n
+			this.conn = darConexion();
+			daoReservas.setConn(conn);
+			reservas = daoReservas.darReservas();
+
+		} catch (SQLException e) {
+			System.err.println("SQLException:" + e.getMessage());
+			e.printStackTrace();
+			throw e;
+		} catch (Exception e) {
+			System.err.println("GeneralException:" + e.getMessage());
+			e.printStackTrace();
+			throw e;
+		} finally {
+			try {
+				daoReservas.cerrarRecursos();
+				if(this.conn!=null)
+					this.conn.close();
+			} catch (SQLException exception) {
+				System.err.println("SQLException closing resources:" + exception.getMessage());
+				exception.printStackTrace();
+				throw exception;
+			}
+		}
+		return new ListaReservas(reservas);
 	}
 	
 
