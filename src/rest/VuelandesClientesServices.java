@@ -30,6 +30,7 @@ import tm.VuelandesMaster;
 import vos.Video;
 import vos.ListaClientes;
 import vos.ListaVideos;
+import vos.Reserva;
 
 /**
  * Clase que expone servicios REST con ruta base: http://"ip o nombre de host":8080/VideoAndes/rest/videos/...
@@ -101,6 +102,22 @@ public class VuelandesClientesServices {
 		}
 		return Response.status(200).entity(clientes).build();
 	}
+	
+	
+	@PUT
+	@Path("/id/{id}/agregarReserva")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response addReserva(Reserva reserva) {
+		VuelandesMaster tm = new VuelandesMaster(getPath());
+		try {
+			tm.addReserva(reserva);
+		} catch (Exception e) {
+			return Response.status(500).entity(doErrorMessage(e)).build();
+		}
+		return Response.status(200).entity(video).build();
+	}
+	
 	
 
 
