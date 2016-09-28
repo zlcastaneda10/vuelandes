@@ -18,9 +18,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import dao.DAOTablaAerolineas;
+import dao.DAOTablaClientes;
 import dao.DAOTablaVideos;
+import dao.DAOTablaVuelos;
 import vos.Video;
+import vos.Vuelo;
+import vos.Aerolinea;
+import vos.Cliente;
+import vos.ListaAerolinea;
+import vos.ListaClientes;
 import vos.ListaVideos;
+import vos.ListaVuelos;
 
 /**
  * Fachada en patron singleton de la aplicación
@@ -373,5 +382,8 @@ public class VideoAndesMaster {
 		}
 		return new ListaVideos(videos);
 	}
+	
+	
+	
 	
 }

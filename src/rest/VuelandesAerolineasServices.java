@@ -88,9 +88,9 @@ public class VuelandesAerolineasServices {
      * el error que se produjo
      */
 	@GET
-	@Path("/id/{id}")
+	@Path("/id/{id}/")
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response getVideoName(@javax.ws.rs.PathParam("id") String id) {
+	public Response getAerolineaId(@javax.ws.rs.PathParam("id") String id) {
 		VuelandesMaster tm = new VuelandesMaster(getPath());
 		ListaAerolinea aerolineas;
 		try {
@@ -103,6 +103,21 @@ public class VuelandesAerolineasServices {
 		return Response.status(200).entity(aerolineas).build();
 	}
 	
+	@GET
+	@Path("/id/{id}/vuelos")
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response getVuelosAerolinea(@javax.ws.rs.PathParam("id") String id) {
+		VuelandesMaster tm = new VuelandesMaster(getPath());
+		ListaAerolinea aerolineas;
+		try {
+			if (id == null || id.length() == 0)
+				throw new Exception("Nombre de aerolinea  no valido");
+			aerolineas = tm.buscarAerolineaPorID(id);
+		} catch (Exception e) {
+			return Response.status(500).entity(doErrorMessage(e)).build();
+		}
+		return Response.status(200).entity(aerolineas).build();
+	}
    
 
 

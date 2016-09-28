@@ -110,13 +110,15 @@ public class VuelandesVuelosServices {
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response getVueloMasReservado() {
 		VuelandesMaster tm = new VuelandesMaster(getPath());
-		Vuelo masReservado = tm.;
+		Vuelo masReservado = null;
 		try {
-			videos = tm.videosMasAlquilados();
+			masReservado = tm.vueloMasReservado();
 		} catch (Exception e) {
-			return Response.status(500).entity(doErrorMessage(e)).build();
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		return Response.status(200).entity(videos).build();
+		
+		return Response.status(200).entity(masReservado).build();
 	}
 
 
