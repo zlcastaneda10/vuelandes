@@ -77,7 +77,7 @@ public class VuelandesReservasServices {
 	}
 	
 	
-	@PUT
+	@POST
 	@Path("/agregarReserva")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
