@@ -75,19 +75,19 @@ public class DAOTablaViajeros {
 			int idViajero = Integer.parseInt(rs.getString("ID"));
 			String nombre = rs2.getString("NOMBRE");
 			String tipoId = rs2.getString("TIPO_ID");
-			int telefono = Integer.parseInt(rs2.getString("TELEFONO"));
+			String telefono = rs2.getString("TELEFONO");
 			int idUsuario = Integer.parseInt(rs2.getString("ID_USUARIO"));
 			String apellido = rs2.getString("APELLIDO");
 			int millas = Integer.parseInt(rs.getString("MILLAS"));
 			char frecuente = rs.getString("FRECUENTE").charAt(0);
-			int idCliente = Integer.parseInt(rs.getString("ID_CLIENTE"));
+			Long idCliente = Long.parseLong(rs.getString("ID_CLIENTE"));
 			ArrayList<Integer> nacionalidades = darNacionalidad(idCliente);
 			viajeros.add(new Viajero(idViajero, nacionalidades, nombre, apellido, idUsuario, tipoId, telefono, millas, frecuente, idCliente));
 		}
 		return viajeros;
 	}
 	
-	public ArrayList<Integer> darNacionalidad(int idCliente) throws SQLException, Exception{
+	public ArrayList<Integer> darNacionalidad(Long idCliente) throws SQLException, Exception{
 		ArrayList<Integer> Nacionalidades = new ArrayList<Integer>();
 
 		String sql = "SELECT * FROM ISIS2304B271620.NACIONALIDAD WHERE ID_CLIENTE = "+ idCliente;

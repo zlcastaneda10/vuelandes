@@ -11,10 +11,10 @@ public class Cliente {
 	private String apellido;
 	private String tipoIdentificacion;
 	private int idUsuario;
-	private int telefono;
+	private String telefono;
 	
 	public Cliente(Long id, ArrayList<Integer> idNacionalidad, String nombre, String apellido,int idUsuario, String tipoIdentificacion, 
-			int telefono) {
+			String telefono) {
 		super();
 		this.id = id;
 		this.idNacionalidad = idNacionalidad;
@@ -73,11 +73,11 @@ public class Cliente {
 		this.tipoIdentificacion = tipoIdentificacion;
 	}
 
-	public int getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(int telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 	

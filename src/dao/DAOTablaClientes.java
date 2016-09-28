@@ -71,7 +71,7 @@ public class DAOTablaClientes {
 			Long id = Long.parseLong(rs.getString("ID"));
 			String nombre = rs.getString("NOMBRE");
 			String tipoId = rs.getString("TIPO_ID");
-			int telefono = Integer.parseInt(rs.getString("TELEFONO"));
+			String telefono = rs.getString("TELEFONO");
 			int idUsuario = Integer.parseInt(rs.getString("ID_USUARIO"));
 			String apellido = rs.getString("APELLIDO");
 			ArrayList<Integer> nacionalidades = darNacionalidad(id);
@@ -91,7 +91,7 @@ public class DAOTablaClientes {
 		Long id = Long.parseLong(rs.getString("ID"));
 		String nombre = rs.getString("NOMBRE");
 		String tipoId = rs.getString("TIPO_ID");
-		int telefono = Integer.parseInt(rs.getString("TELEFONO"));
+		String telefono = rs.getString("TELEFONO");
 		int idUsuario = Integer.parseInt(rs.getString("ID_USUARIO"));
 		String apellido = rs.getString("APELLIDO");
 		ArrayList<Integer> nacionalidades = darNacionalidad(id);

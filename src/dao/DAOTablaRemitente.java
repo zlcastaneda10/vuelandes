@@ -72,10 +72,10 @@ public class DAOTablaRemitente {
 		ResultSet rs2 = prepStmt2.executeQuery();
 
 		while (rs2.next() && rs.next()) {
-			int idCliente = Integer.parseInt(rs2.getString("ID"));
+			Long idCliente = Long.parseLong(rs2.getString("ID"));
 			String nombre = rs2.getString("NOMBRE");
 			String tipoId = rs2.getString("TIPO_ID");
-			int telefono = Integer.parseInt(rs2.getString("TELEFONO"));
+			String telefono = rs2.getString("TELEFONO");
 			int idUsuario = Integer.parseInt(rs2.getString("ID_USUARIO"));
 			String apellido = rs2.getString("APELLIDO");
 			int idRemitente = Integer.parseInt(rs.getString("ID"));
@@ -85,7 +85,7 @@ public class DAOTablaRemitente {
 		return remitentes;
 	}
 	
-	public ArrayList<Integer> darNacionalidad(int idCliente) throws SQLException, Exception{
+	public ArrayList<Integer> darNacionalidad(Long idCliente) throws SQLException, Exception{
 		ArrayList<Integer> Nacionalidades = new ArrayList<Integer>();
 
 		String sql = "SELECT * FROM ISIS2304B271620.NACIONALIDAD WHERE ID_CLIENTE = "+ idCliente;

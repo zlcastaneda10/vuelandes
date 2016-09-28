@@ -9,7 +9,7 @@ public class Viajero extends Cliente{
 	private int idViajero;
 	
 	public Viajero(int idViajero, ArrayList<Integer> idNacionalidad, String nombre, String apellido, int idUsuario,
-			String tipoIdentificacion, int telefono, int millas, char frecuente, Long idCliente) {
+			String tipoIdentificacion, String telefono, int millas, char frecuente, Long idCliente) {
 		super(idCliente, idNacionalidad, nombre, apellido, idUsuario, tipoIdentificacion, telefono);
 		this.millas = millas;
 		this.frecuente = frecuente;

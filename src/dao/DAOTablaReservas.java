@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import vos.Cliente;
 import vos.Reserva;
+import vos.Video;
 
 public class DAOTablaReservas {
 
@@ -77,5 +78,22 @@ public class DAOTablaReservas {
 		}
 		return reservas;
 	}
+	
+	public void addReserva(Reserva reserva) throws SQLException, Exception {
+
+		String sql = "INSERT INTO ISIS2304MO11620.RESERVA VALUES (";
+		sql += reserva.getId() + ",'";
+		sql += reserva.getServicioTranspote() + "',";
+		sql += reserva.getFecha() + "',";
+		sql += reserva.getCkeckIn()+ ")";
+
+		System.out.println("SQL stmt:" + sql);
+
+		PreparedStatement prepStmt = conn.prepareStatement(sql);
+		recursos.add(prepStmt);
+		prepStmt.executeQuery();
+
+	}
+	
 
 }
